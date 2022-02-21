@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       </Head>
       <Header />
 
-      <div>
+      <div className='flex justify-between items-center bg-emerald-200 border-y border-black py-10 lg:py-0'>
         <div className="px-10 space-y-5">
           <h1 className='text-6xl max-w-xl font-serif'>
             <span className='overline decoration-black decoration-4'>.blog</span> is a place to write, read, and connect
@@ -22,9 +22,10 @@ const Home: NextPage = () => {
           </h2>
         </div>
 
-        <div>
-        
-        </div>  
+        <img className='hidden md:inline-flex h-32 lg:h-full' 
+             src="https://blog.webnames.ca/wp-content/uploads/dotBLOG-banner-v2-1.png" 
+             alt="" 
+        />  
       </div>
     </div>
   )
