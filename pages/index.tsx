@@ -13,7 +13,18 @@ const Home: NextPage = () => {
       <Header />
 
       <div>
+        <div className="px-10 space-y-5">
+          <h1 className='text-6xl max-w-xl font-serif'>
+            <span className='overline decoration-black decoration-4'>.blog</span> is a place to write, read, and connect
+          </h1>
+          <h2>
+            It's easy and free to post your thinking on any topic and connect with millions of bloggers just like you.
+          </h2>
+        </div>
+
+        <div>
         
+        </div>  
       </div>
     </div>
   )
