@@ -84,3 +84,6 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+// npm install -g @sanity/cli
+// sanity init --coupon sonny2022
