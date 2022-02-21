@@ -18,9 +18,9 @@ function Header() {
         </div>
       </div>
       
-      <div className='flex items-center space-x-5 text-emerald-800'>
-        <h3>Sign In</h3>
-        <h3 className='border px-4 py-1 rounded-full border-emerald-200'>Get Started</h3>
+      <div className='flex items-center space-x-5 text-emerald-800 cursor-pointer transition duration-200 ease-out'>
+        <h3 className='hover:shadow-lg rounded-full px-4 py-1'>Sign In</h3>
+        <h3 className='border px-4 py-1 rounded-full border-emerald-200 hover:border-none hover:text-white hover:bg-emerald-200 transition duration-200 ease-out'>Get Started</h3>
       </div>
     </header>
   );
