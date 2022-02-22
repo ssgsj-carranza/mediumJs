@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Header from '../components/Header'
+import {sanityClient, urlFor} from '../sanity';
 
 const Home: NextPage = () => {
   return (
@@ -35,7 +36,19 @@ const Home: NextPage = () => {
 export default Home
 
 export const getServerSideProps = async () => {
-  const query = 
+  const query = `*[_type == 'post']{
+    _id,
+    title,
+    author -> {
+    name,
+    image,
+  },
+    description,
+    mainImage,
+    slug
+  }`;
+  
+  const posts = await sanityClient.fetch(query);
 };
 
 // npm install -g @sanity/cli
