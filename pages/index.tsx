@@ -27,6 +27,7 @@ const Home: NextPage = () => {
              alt="" 
         />  
       </div>
+      {/* posts */}
     </div>
   )
 }

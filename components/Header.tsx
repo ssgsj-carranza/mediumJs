@@ -13,7 +13,7 @@ function Header() {
         </Link>
         <div className='hidden md:inline-flex items-center space-x-5 font-semibold'>
             <h3 className='hover:shadow-lg rounded-full px-4 py-1 transition duration-200 ease-out cursor-pointer'>About</h3>
-            <h3 className='hover:shadow-lg rounded-full px-4 py-1 transition duration-200 ease-out'>Contact</h3>
+            <h3 className='hover:shadow-lg rounded-full px-4 py-1 transition duration-200 ease-out cursor-pointer'>Contact</h3>
             <button className='text-white bg-emerald-200 rounded-full px-4 py-1 cursor-pointer hover:shadow-lg hover:animate-pulse'>Follow</button>
         </div>
       </div>
