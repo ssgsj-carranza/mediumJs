@@ -36,3 +36,4 @@ export default Home
 
 // npm install -g @sanity/cli
 // sanity init --coupon sonny2022
+// npm install next-sanity
