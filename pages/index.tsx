@@ -34,6 +34,10 @@ const Home: NextPage = () => {
 
 export default Home
 
+export const getServerSideProps = async () => {
+  const query = 
+};
+
 // npm install -g @sanity/cli
 // sanity init --coupon sonny2022
 // npm install next-sanity
