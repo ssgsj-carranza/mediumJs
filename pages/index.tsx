@@ -39,7 +39,7 @@ export default function Home({posts}:Props) {
         {posts.map((post) => (
           <Link key={post._id} href={`/post/${post.slug.current}`}>
             <div>
-              Post
+              <img src={urlFor(post.mainImage).url()!} alt="" />
             </div>
           </Link>
         ))}
@@ -74,3 +74,4 @@ export const getServerSideProps = async () => {
 // npm install -g @sanity/cli
 // sanity init --coupon sonny2022
 // npm install next-sanity
+// npm install --save @sanity/image-url
