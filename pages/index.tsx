@@ -35,17 +35,20 @@ export default function Home({posts}:Props) {
         />  
       </div>
       {/* posts */}
-      <div>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 p-2 lg:p-6'>
         {posts.map((post) => (
           <Link key={post._id} href={`/post/${post.slug.current}`}>
-            <div>
+            <div className="">
               <img src={urlFor(post.mainImage).url()!} alt="" />
-              <div>
+              <div className="flex justify-between p-5 bg-white">
                 <div>
                   <p>{post.title}</p>
                   <p>{post.description} by {post.author.name}</p>
                 </div>
-                <img src={urlFor(post.author.image).url()!} alt="" />
+                <img className='h-12 w-12 rounded-full'
+                     src={urlFor(post.author.image).url()!} 
+                     alt="" 
+                />
               </div>
             </div>
           </Link>
