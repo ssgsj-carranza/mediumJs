@@ -40,6 +40,13 @@ export default function Home({posts}:Props) {
           <Link key={post._id} href={`/post/${post.slug.current}`}>
             <div>
               <img src={urlFor(post.mainImage).url()!} alt="" />
+              <div>
+                <div>
+                  <p>{post.title}</p>
+                  <p>{post.description} by {post.author.name}</p>
+                </div>
+                <img src={urlFor(post.author.image).url()!} alt="" />
+              </div>
             </div>
           </Link>
         ))}
