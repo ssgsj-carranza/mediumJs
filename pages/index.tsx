@@ -88,3 +88,4 @@ export const getServerSideProps = async () => {
 // sanity init --coupon sonny2022
 // npm install next-sanity
 // npm install --save @sanity/image-url
+// npm install react-portable-text
