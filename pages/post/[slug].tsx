@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import Header from '../../components/Header';
 import {sanityClient, urlFor} from '../../sanity';
 import { Post } from '../../typings';
@@ -30,3 +31,5 @@ export const getStaticPaths = async () => {
         fallback: 'blocking',
     };
 };
+
+export const getStaticProps: GetStaticProps.
