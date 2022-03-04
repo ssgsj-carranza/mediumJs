@@ -12,7 +12,7 @@ function Post() {
 
 export default Post;
 
-//pre-fetching all the routes, prepares page
+//pre-fetching all the routes, prepares page, gives back array of paths(slugs)
 export const getStaticPaths = async () => {
     const query = `*[_type == 'post] {
         _id,
@@ -32,6 +32,7 @@ export const getStaticPaths = async () => {
     };
 };
 
+//uses slugs to fetch information for each page
 export const getStaticProps: GetStaticProps = async ({params}) => {
     const query = `*[_type == 'post' && slug.current == $slug] [0]{
         _id,
@@ -41,9 +42,29 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
         name,
         image,
       },
+      'comments': *[
+          _type == "comment" &&
+          post._ref == ^._id &&
+          approved == true
+      ],
         description,
         mainImage,
         slug,
         body
       }`
+
+      const post = await sanityClient.fetch(query, {
+          slug: params?.slug,
+      });
+
+      if(!post) {
+          return {
+              notFound: true,
+          }
+      }
+      return {
+          props: {
+              post,
+          }
+      }
 };
