@@ -66,11 +66,12 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
       if(!post) {
           return {
               notFound: true,
-          }
+          };
       }
       return {
           props: {
               post,
-          }
-      }
+          },
+          revalidate: 60, //after 60sec old cache version will be updated, server sides render page after 60sex and then caches it
+      };
 };
