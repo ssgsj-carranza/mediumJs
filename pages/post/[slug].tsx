@@ -3,7 +3,13 @@ import Header from '../../components/Header';
 import {sanityClient, urlFor} from '../../sanity';
 import { Post } from '../../typings';
 
-function Post() {
+interface Props {
+    post: Post;
+}
+
+function Post({post}: Props) {
+    console.log(post);
+
     return (
         <main>
             <Header />
@@ -14,7 +20,7 @@ export default Post;
 
 //pre-fetching all the routes, prepares page, gives back array of paths(slugs)
 export const getStaticPaths = async () => {
-    const query = `*[_type == 'post] {
+    const query = `*[_type == 'post'] {
         _id,
         slug {
             current
