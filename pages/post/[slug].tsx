@@ -1,5 +1,6 @@
 import Header from '../../components/Header';
 import {sanityClient, urlFor} from '../../sanity';
+import { Post } from '../../typings';
 
 function Post() {
     return (
@@ -10,7 +11,7 @@ function Post() {
 
 export default Post;
 
-//pre-fetching all the routes
+//pre-fetching all the routes, prepares page
 export const getStaticPaths = async () => {
     const query = `*[_type == 'post] {
         _id,
@@ -19,4 +20,13 @@ export const getStaticPaths = async () => {
         }
     }`;
     const posts = await sanityClient.fetch(query);
-}
+    const paths = posts.map((post: Post) => ({
+        params: {
+            slug: post.slug.current,
+        },
+    }));
+    return {
+        paths,
+        fallback: 'blocking',
+    };
+};
