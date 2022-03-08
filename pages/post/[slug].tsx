@@ -58,17 +58,17 @@ function Post({post}: Props) {
                 <h3 className='text-sm text-emerald-500'>Enjoyed this article?</h3>
                 <h4 className='text-3xl font-bold'>Leave a comment below!</h4>
                 <hr className='py-3 mt-2'/>
-                <label>
-                    <span>Name</span>
-                    <input type='text' placeholder='Name here' />
+                <label className='block mb-5'>
+                    <span className='text-gray-700 font-semibold'>Name</span>
+                    <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-500' type='text' placeholder='Name here' />
                 </label>
-                <label>
-                    <span>Email</span>
-                    <input type='text' placeholder='Email here' />
+                <label className='block mb-5'>
+                    <span className='text-gray-700 font-semibold'>Email</span>
+                    <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-500' type='text' placeholder='Email here' />
                 </label>
-                <label>
-                    <span>Comment</span>
-                    <textarea placeholder='Add comment' rows={8}/>
+                <label className='block mb-5'>
+                    <span className='text-gray-700 font-semibold'>Comment</span>
+                    <textarea className='shadow border rounded py-2 px-3 form-textarea mt-1 block w-full ring-emerald-500' placeholder='Add comment' rows={8}/>
                 </label>
             </form>
         </main>
