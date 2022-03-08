@@ -18,7 +18,7 @@ interface IFormInput {
 
 function Post({post}: Props) {
     //connects our form
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm<IFormInput>();
 
     return (
         <main>
@@ -69,18 +69,42 @@ function Post({post}: Props) {
                 <h3 className='text-sm text-emerald-500'>Enjoyed this article?</h3>
                 <h4 className='text-3xl font-bold'>Leave a comment below!</h4>
                 <hr className='py-3 mt-2'/>
+                
+                <input 
+                    {...register("_id")}
+                    type='hidden'
+                    name="_id"
+                    value={post._id}
+                />
+
                 <label className='block mb-5'>
                     <span className='text-gray-700 font-semibold'>Name</span>
-                    <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-200 outline-none focus:ring' type='text' placeholder='Name here' />
+                    <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-200 outline-none focus:ring' 
+                           type='text' 
+                           placeholder='Name here' 
+                           {...register("name", {required: true})} 
+                    />
                 </label>
                 <label className='block mb-5'>
                     <span className='text-gray-700 font-semibold'>Email</span>
-                    <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-200 outline-none focus:ring' type='text' placeholder='Email here' />
+                    <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-200 outline-none focus:ring' 
+                           type='text' 
+                           placeholder='Email here'
+                           {...register("email", {required: true})} 
+                    />
                 </label>
                 <label className='block mb-5'>
                     <span className='text-gray-700 font-semibold'>Comment</span>
-                    <textarea className='shadow border rounded py-2 px-3 form-textarea mt-1 block w-full ring-emerald-200 outline-none focus:ring' placeholder='Add comment' rows={8}/>
+                    <textarea className='shadow border rounded py-2 px-3 form-textarea mt-1 block w-full ring-emerald-200 outline-none focus:ring' 
+                              placeholder='Add comment' 
+                              rows={8}
+                              {...register("comment", {required: true})}
+                    />
                 </label>
+                {/* error will return if any of the required fields is left empty */}
+                <div>
+                    {errors.name}
+                </div>
             </form>
         </main>
 )}
