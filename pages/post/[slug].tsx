@@ -54,10 +54,21 @@ function Post({post}: Props) {
 
             </article>
             <hr className='max-w-lg my-5 mx-auto border border-emerald-400'/>
-            <form>
+            <form className='flex flex-col p-5 mx-auto mb-10 max-w-2xl'>
+                <h3 className='text-sm text-emerald-500'>Enjoyed this article?</h3>
+                <h4 className='text-3xl font-bold'>Leave a comment below!</h4>
+                <hr className='py-3 mt-2'/>
                 <label>
                     <span>Name</span>
                     <input type='text' placeholder='Name here' />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type='text' placeholder='Email here' />
+                </label>
+                <label>
+                    <span>Comment</span>
+                    <textarea placeholder='Add comment' rows={8}/>
                 </label>
             </form>
         </main>
