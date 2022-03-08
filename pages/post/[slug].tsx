@@ -3,12 +3,23 @@ import Header from '../../components/Header';
 import {sanityClient, urlFor} from '../../sanity';
 import { Post } from '../../typings';
 import PortableText from 'react-portable-text';
+import {useForm, SubmitHandler} from 'react-hook-form';
 
 interface Props {
     post: Post;
 }
 
+interface IFormInput {
+    _id: string;
+    name: string;
+    email: string;
+    comment: string;
+}
+
 function Post({post}: Props) {
+    //connects our form
+    const {register, handleSubmit, formState: {errors}} = useForm();
+
     return (
         <main>
             <Header />
@@ -60,15 +71,15 @@ function Post({post}: Props) {
                 <hr className='py-3 mt-2'/>
                 <label className='block mb-5'>
                     <span className='text-gray-700 font-semibold'>Name</span>
-                    <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-500' type='text' placeholder='Name here' />
+                    <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-200 outline-none focus:ring' type='text' placeholder='Name here' />
                 </label>
                 <label className='block mb-5'>
                     <span className='text-gray-700 font-semibold'>Email</span>
-                    <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-500' type='text' placeholder='Email here' />
+                    <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-200 outline-none focus:ring' type='text' placeholder='Email here' />
                 </label>
                 <label className='block mb-5'>
                     <span className='text-gray-700 font-semibold'>Comment</span>
-                    <textarea className='shadow border rounded py-2 px-3 form-textarea mt-1 block w-full ring-emerald-500' placeholder='Add comment' rows={8}/>
+                    <textarea className='shadow border rounded py-2 px-3 form-textarea mt-1 block w-full ring-emerald-200 outline-none focus:ring' placeholder='Add comment' rows={8}/>
                 </label>
             </form>
         </main>
