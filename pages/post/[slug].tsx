@@ -102,8 +102,16 @@ function Post({post}: Props) {
                     />
                 </label>
                 {/* error will return if any of the required fields is left empty */}
-                <div>
-                    {errors.name}
+                <div className='flex flex-col p-5'>
+                    {errors.name && (
+                        <span className='text-red-500'>Name is require</span>
+                    )}
+                    {errors.email && (
+                        <span className='text-red-500'>Email is require</span>
+                    )}
+                    {errors.comment && (
+                        <span className='text-red-500'>Comment is required</span>
+                    )}
                 </div>
             </form>
         </main>
