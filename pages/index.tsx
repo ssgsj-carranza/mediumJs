@@ -90,3 +90,4 @@ export const getServerSideProps = async () => {
 // npm install --save @sanity/image-url
 // npm install react-portable-text
 // npm install react-hook-form
+// npm install @sanity/client

@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import  sanityClient  from '@sanity/client';
 
 
 const config ={
@@ -7,6 +8,8 @@ const config ={
     useCdn: process.env.NODE_ENV ==='production',
     token: process.env.SANITY_API_TOKEN,
 };
+
+const client = sanityClient(config);
 
 
 export default function createComment(
