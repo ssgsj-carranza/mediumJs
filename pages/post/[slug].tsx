@@ -4,6 +4,7 @@ import {sanityClient, urlFor} from '../../sanity';
 import { Post } from '../../typings';
 import PortableText from 'react-portable-text';
 import {useForm, SubmitHandler} from 'react-hook-form';
+import { useState } from 'react';
 
 interface Props {
     post: Post;
@@ -17,6 +18,7 @@ interface IFormInput {
 }
 
 function Post({post}: Props) {
+    const [submitted, setSubmitted] = useState(false);
     //connects our form
     const {register, handleSubmit, formState: {errors}} = useForm<IFormInput>();
 
@@ -27,8 +29,10 @@ function Post({post}: Props) {
             body: JSON.stringify(data),
         }).then(() => {
             console.log(data);
+            setSubmitted(true);
         }).catch((err) => {
             console.log(err);
+            setSubmitted(false);
         }); 
     };
 
@@ -77,7 +81,11 @@ function Post({post}: Props) {
 
             </article>
             <hr className='max-w-lg my-5 mx-auto border border-emerald-400'/>
-            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col p-5 mx-auto mb-10 max-w-2xl'>
+
+            {submitted ? (
+                <h1>Submitted</h1>
+            ) : (
+                <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col p-5 mx-auto mb-10 max-w-2xl'>
                 <h3 className='text-sm text-emerald-500'>Enjoyed this article?</h3>
                 <h4 className='text-3xl font-bold'>Leave a comment below!</h4>
                 <hr className='py-3 mt-2'/>
@@ -127,6 +135,8 @@ function Post({post}: Props) {
                 </div>
                 <input className='border px-4 py-1 rounded-full border-emerald-200 hover:border-none hover:text-white hover:bg-emerald-200 transition duration-200 ease-out hover:shadow-lg' type='submit'/>
             </form>
+            )}
+            
         </main>
 )}
 
