@@ -83,7 +83,10 @@ function Post({post}: Props) {
             <hr className='max-w-lg my-5 mx-auto border border-emerald-400'/>
 
             {submitted ? (
-                <h1>Submitted</h1>
+                <div className='flex flex-col p-10 my-10 bg-emerald-200 max-w-2xl mx-auto rounded-bl-3xl rounded-tr-3xl'>
+                    <h3 className='text-3xl font-bold'>Thank you for submitting a comment!</h3>
+                    <p className='text-sm text-gray-500'>Once it has been approved it will appear below</p>
+                </div>
             ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col p-5 mx-auto mb-10 max-w-2xl'>
                 <h3 className='text-sm text-emerald-500'>Enjoyed this article?</h3>
