@@ -20,8 +20,16 @@ function Post({post}: Props) {
     //connects our form
     const {register, handleSubmit, formState: {errors}} = useForm<IFormInput>();
 
+    //push data from form to api backend, post api request, update data on backend
     const onSubmit: SubmitHandler<IFormInput> = async(data) => {
-                
+        await fetch('/api/createComment', {
+            method: 'POST',
+            body: JSON.stringify(data),
+        }).then(() => {
+            console.log(data);
+        }).catch((err) => {
+            console.log(err);
+        }); 
     };
 
     return (
@@ -69,7 +77,7 @@ function Post({post}: Props) {
 
             </article>
             <hr className='max-w-lg my-5 mx-auto border border-emerald-400'/>
-            <form onSubmit={handleSubmit(onSubmit)}> className='flex flex-col p-5 mx-auto mb-10 max-w-2xl'>
+            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col p-5 mx-auto mb-10 max-w-2xl'>
                 <h3 className='text-sm text-emerald-500'>Enjoyed this article?</h3>
                 <h4 className='text-3xl font-bold'>Leave a comment below!</h4>
                 <hr className='py-3 mt-2'/>
@@ -92,7 +100,7 @@ function Post({post}: Props) {
                 <label className='block mb-5'>
                     <span className='text-gray-700 font-semibold'>Email</span>
                     <input className='shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-emerald-200 outline-none focus:ring' 
-                           type='text' 
+                           type='email' 
                            placeholder='Email here'
                            {...register("email", {required: true})} 
                     />
@@ -108,13 +116,13 @@ function Post({post}: Props) {
                 {/* error will return if any of the required fields is left empty */}
                 <div className='flex flex-col p-5'>
                     {errors.name && (
-                        <span className='text-red-500'>Name is require</span>
+                        <span className='text-red-500'>*Name is required</span>
                     )}
                     {errors.email && (
-                        <span className='text-red-500'>Email is require</span>
+                        <span className='text-red-500'>*Email is required</span>
                     )}
                     {errors.comment && (
-                        <span className='text-red-500'>Comment is required</span>
+                        <span className='text-red-500'>*Comment is required</span>
                     )}
                 </div>
                 <input className='border px-4 py-1 rounded-full border-emerald-200 hover:border-none hover:text-white hover:bg-emerald-200 transition duration-200 ease-out hover:shadow-lg' type='submit'/>
