@@ -6,7 +6,7 @@ export interface Post {
         name: string;
         image: string;
     };
-    commnets: Comment[];
+    comments: Comment[];
     description: string;
     mainImage: {
         aset: {
